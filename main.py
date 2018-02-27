@@ -15,23 +15,23 @@ captcha = Captcha()
 
 driver = webdriver.PhantomJS()
 
-login_flag=False
-pre_login_flag=False
-chance=False
+login_flag = False
+pre_login_flag = False
+chance = False
 
 
 
 print('new start')
-newstart='new start'
+newstart = 'new start'
 send_email(newstart, newstart.encode('utf-8'))
 
 
 def pre_login(driver):
     driver.implicitly_wait(req_timeout)
-    driver .get('https://passport.ustc.edu.cn/login?service=http%3A%2F%2Fyjs%2Eustc%2Eedu%2Ecn%2Fdefault%2Easp')
+    driver.get('https://passport.ustc.edu.cn/login?service=http%3A%2F%2Fyjs%2Eustc%2Eedu%2Ecn%2Fdefault%2Easp')
 
     try:
-        assert driver.title=="中国科学技术大学统一身份认证系统"
+        assert driver.title == "中国科学技术大学统一身份认证系统"
     except Exception as e:
         print('Assertion test fail.', format(e))
         driver.refresh()
@@ -54,7 +54,7 @@ def pre_login(driver):
 def login(driver):
 
     try:
-        assert driver.title=="中国科学技术大学研究生信息平台"
+        assert driver.title == "中国科学技术大学研究生信息平台"
     except Exception as e:
         print('Assertion test fail.', format(e))
         driver.refresh()
@@ -79,7 +79,7 @@ def login(driver):
 
     print(aaa.get_attribute('href'))
 
-    driver .get(aaa.get_attribute('href'))
+    driver.get(aaa.get_attribute('href'))
 
     #driver.get_screenshot_as_file("./test3.jpg")  # 屏幕截图
 
@@ -132,12 +132,12 @@ while not chance:
     table_body = table.find('tbody')
     rows = table_body.find_all('tr')
     print(len(rows))
-    if len(rows) <41:                                                                                     # 这里是选课人数上限 +1
+    if len(rows) < 41:                                                                         # 这里是选课人数上限 +1
         mymail="chance !"
         send_email(mymail, mymail.encode('utf-8'))
         new_driver = webdriver.PhantomJS()
         choose(new_driver)
-        chance=True
+        chance = True
     time.sleep(interval)
 
 
@@ -157,7 +157,7 @@ new_driver.close()
 # opener = urllib.request.build_opener(cookie_support)
 #
 # req = urllib.request.Request(
-#     url='http://yjs.ustc.edu.cn/checkcode.asp',
+#     url = 'http://yjs.ustc.edu.cn/checkcode.asp',
 #     headers=headers
 # )
 # content = urllib.request.urlopen(req, timeout=req_timeout).read()
