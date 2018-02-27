@@ -55,7 +55,7 @@ requests
 numpy
 selenium
 bs4
-
+smtplib
 ```
 
 ### TODO
