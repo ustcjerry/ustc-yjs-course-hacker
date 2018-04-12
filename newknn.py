@@ -38,3 +38,17 @@ class Captcha:
         for i in result:
             letter.append(chr(i))
         return ''.join(letter)
+
+    def hack_img(self, img):
+        test_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        test_final = cv2.threshold(test_gray, 100, 255, cv2.THRESH_BINARY)[1]
+        # cv2.imshow("TEST", test_final)
+        # cv2.waitKey(0)
+        test_cells = np.array([i.reshape(-1).astype(np.float32)
+                            for i in np.hsplit(test_final, 4)])
+        ret, result, neighbours, dist = self.knn.findNearest(test_cells, k=1)
+        result = result.reshape(-1)
+        letter = []
+        for i in result:
+            letter.append(chr(i))
+        return ''.join(letter)    
