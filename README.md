@@ -3,6 +3,7 @@
 USTC 研究生平台自动刷课脚本
 —————基于zzh1996的[项目](https://github.com/zzh1996/ustc-grade-automatic-notification)
 
+### -----选课系统改版，脚本失效-----
 
 ### 简介
 
